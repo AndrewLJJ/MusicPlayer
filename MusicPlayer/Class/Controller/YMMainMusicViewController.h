@@ -13,8 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YMMainMusicViewController : GKNavigationBarViewController
 
-/** 播放音频model */
-@property (nonatomic, strong) YMModel                *musicModel;
+/** 播放的音频model */
+@property (nonatomic, assign) NSInteger                index;
+/** 音频数组 */
+@property (nonatomic, copy) NSArray                    *musicModels;
 
 @end
 

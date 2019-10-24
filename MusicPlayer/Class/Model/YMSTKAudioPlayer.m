@@ -88,17 +88,20 @@
     [self tryLaunchProgressTimer];
 }
 
+//暂停
 - (void)ym_pause {
     [self.audioPlayer pause];
     [_refreshTimer invalidate];
     _refreshTimer = nil;
 }
 
+//继续
 - (void)ym_resume {
     [self.audioPlayer resume];
     [self tryLaunchProgressTimer];
 }
 
+//停止
 - (void)ym_stop {
     [self.audioPlayer stop];
     [_refreshTimer invalidate];

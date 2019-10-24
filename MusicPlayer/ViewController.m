@@ -52,7 +52,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     YMMainMusicViewController *mainVC = [[YMMainMusicViewController alloc] init];
-    mainVC.musicModel = [self loadData][indexPath.row];
+    mainVC.index = indexPath.row;
+    mainVC.musicModels = [self loadData];
     [self.navigationController pushViewController:mainVC animated:YES];
 }
 

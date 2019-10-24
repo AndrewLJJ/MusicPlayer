@@ -47,12 +47,14 @@
     [self.view addSubview:phonePlayerColView];
     self.phonePlayerColView = phonePlayerColView;
     
+    self.phonePlayerColView.musicModels = self.musicModels;
+    
     [self loadDataPlayer];
 }
 
 //初始化播放器 界面赋值
 - (void)loadDataPlayer {
-    YMModel *model = self.musicModel;
+    YMModel *model = self.musicModels[self.index];
     NSURL *url = [NSURL URLWithString:model.url];
     
     YMSTKAudioPlayer *player = [YMSTKAudioPlayer shareInstance];

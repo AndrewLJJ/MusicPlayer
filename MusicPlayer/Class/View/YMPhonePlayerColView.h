@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YMProgressSlider.h"
+#import "YMModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,6 +30,10 @@ typedef NS_ENUM (NSInteger,YMSTKAudioPlayerPlayMode) {
 @property (nonatomic, assign) double  progressValue;
 /** 播放mode */
 @property (nonatomic, assign) YMSTKAudioPlayerPlayMode playMode;
+/** 音频数组 */
+@property (nonatomic, strong) NSArray                *musicModels;
+/** 获取当前播放音频 */
+@property (nonatomic, strong) YMModel                *currentModel;
 
 /** 开始播放 */
 - (void)startPlayingMusic;

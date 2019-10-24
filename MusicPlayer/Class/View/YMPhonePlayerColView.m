@@ -237,6 +237,8 @@
 
 /** 上一首 */
 - (IBAction)lastBtnClick:(UIButton *)sender {
+    YMModel *model = [self previousMusic];
+    [[YMSTKAudioPlayer shareInstance] ym_playWithURL:[NSURL URLWithString:model.url]];
 }
 
 /** 暂停&&播放 */
@@ -266,6 +268,29 @@
 /** 暂停播放 */
 - (void)pausePlayingMusic {
     self.playPauseBtn.selected = NO;
+}
+
+/** 返回上一首音乐 */
+- (YMModel *)previousMusic {
+    //1.获取当前音频的下标值
+    NSString *url = [[YMSTKAudioPlayer shareInstance].currentURL absoluteString];
+    //获取音频数组中的url
+    NSArray *urls = [self.musicModels valueForKey:@"url"];
+    //查看是否存在这个url
+    NSInteger currentIndex = 0;
+    if ([urls containsObject:url]) {
+        currentIndex = [urls indexOfObject:url];
+    }
+    
+    //2.获取上一首音频的下标值
+    NSInteger previousIndex = --currentIndex;
+    YMModel *previousModel = nil;
+    if (previousIndex < 0) {
+        previousIndex = self.musicModels.count - 1;
+    }
+    previousModel = self.musicModels[previousIndex];
+    
+    return previousModel;
 }
 
 @end

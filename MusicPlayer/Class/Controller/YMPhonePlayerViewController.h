@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** View的高度 */
 @property (nonatomic, assign) CGFloat                  viewHeight;
 /** 播放的音频model */
-@property (nonatomic, strong) YMModel                *musicModel;
+@property (nonatomic, assign) NSInteger                index;
+/** 音频数组 */
+@property (nonatomic, copy) NSArray                    *musicModels;
 
 @end
 

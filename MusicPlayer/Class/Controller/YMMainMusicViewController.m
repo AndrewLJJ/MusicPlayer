@@ -154,7 +154,8 @@
 {
     YMPhonePlayerViewController *phoneVC = [[YMPhonePlayerViewController alloc] init];
     phoneVC.viewHeight = self.scrollView.ym_height;
-    phoneVC.musicModel = self.musicModel;
+    phoneVC.index = self.index;
+    phoneVC.musicModels = self.musicModels;
     [self addChildViewController:phoneVC];
     
     YMEquipPlayerViewController *equipVC = [[YMEquipPlayerViewController alloc] init];
