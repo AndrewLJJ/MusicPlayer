@@ -2,8 +2,8 @@
 //  AppDelegate.h
 //  MusicPlayer
 //
-//  Created by 刘家俊 on 17/4/4.
-//  Copyright © 2017年 Andrew. All rights reserved.
+//  Created by Andrew on 2019/9/6.
+//  Copyright © 2019 余默. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

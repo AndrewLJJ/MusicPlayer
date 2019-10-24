@@ -1,0 +1,74 @@
+//
+//  PrefixHeader.pch
+//  MusicPlayer
+//
+//  Created by Andrew on 2019/9/6.
+//  Copyright © 2019 余默. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Main Screen
+#define SCREEN_HEIGHT [[UIScreen mainScreen]bounds].size.height
+#define SCREEN_WIDTH [[UIScreen mainScreen]bounds].size.width
+#define ORIGINAL_MAX_WIDTH 640.0f
+#define KEYWINDOW [[[UIApplication sharedApplication] delegate] window]
+
+/** 颜色 */
+#define YMColorA(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define YMColor(r,g,b) YMColorA(r,g,b,1)
+#define YMRandomColor YMColor(arc4random_uniform(255),arc4random_uniform(255),arc4random_uniform(255))
+/** rgb数值一样 */
+#define YMGrayColor(v) YMColor((v),(v),(v))
+
+/** 弱引用 */
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+#define IS_IPHONE_X (SCREEN_HEIGHT >= 812.0f) ? YES : NO
+#define Height_NavContentBar    44.0f
+#define Height_StatusBar ((IS_IPHONE_X==YES)?44.0f: 20.0f)
+#define Height_NavBar ((IS_IPHONE_X==YES)?88.0f: 64.0f)
+#define Height_TabBar ((IS_IPHONE_X==YES)?83.0f: 49.0f)
+
+//屏幕系数
+#define ConstentSize ((IS_IPHONE_X==YES)? 30.0f: (-3.0f))
+
+//请求服务返回成功
+#define ISSUCCESS [[[obj yy_modelToJSONObject] objectForKey:@"code"] integerValue] == 200
+
+#define IS_SUCCESS [[[responseObject yy_modelToJSONObject] objectForKey:@"code"] integerValue] == 200
+#define OUTLINE [[[obj yy_modelToJSONObject] objectForKey:@"code"] integerValue] == 531
+
+//  适配比例
+#define ADAPTATIONRATIO     SCREEN_WIDTH / 750.0f
+
+#define PDScreenW [UIScreen mainScreen].bounds.size.width / 375
+#define PDScreenH [UIScreen mainScreen].bounds.size.height / 1334
+
+#define PDH [UIScreen mainScreen].bounds.size.height / 667
+
+/**
+ * 苹方字体
+ */
+//常规
+#define LabelFontRegular(t) [UIFont fontWithName:@"PingFangHK-Regular" size:(t)]
+//细分
+#define LabelFontLgiht(t) [UIFont fontWithName:@"PingFangHK-Light" size:(t)]
+//极细分
+#define LabelFontUltralight(t) [UIFont fontWithName:@"PingFangHK-Ultralight" size:(t)]
+//纤细体
+#define LabelFontThin(t) [UIFont fontWithName:@"PingFangHK-Thin" size:(t)]
+//中黑体
+#define LabelFontMedium(t) [UIFont fontWithName:@"PingFangHK-Medium" size:(t)]
+//中粗体
+#define LabelFontSemibold(t) [UIFont fontWithName:@"PingFangHK-Semibold" size:(t)]
+
+#ifdef DEBUG
+#define YMLog(...) NSLog(__VA_ARGS__)
+#else
+#define YMLog(...)
+#endif
+
+
+#endif /* PrefixHeader_pch */

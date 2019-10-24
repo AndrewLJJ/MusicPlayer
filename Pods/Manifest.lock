@@ -1,15 +1,46 @@
 PODS:
-  - Masonry (1.0.2)
-  - MJExtension (3.0.13)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - FreeStreamer (4.0.0):
+    - Reachability (~> 3.0)
+  - GKNavigationBarViewController (2.3.3)
+  - MJExtension (3.1.0)
+  - Reachability (3.2)
 
 DEPENDENCIES:
-  - Masonry
+  - AFNetworking (= 3.1.0)
+  - FreeStreamer
+  - GKNavigationBarViewController
   - MJExtension
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - FreeStreamer
+    - GKNavigationBarViewController
+    - MJExtension
+    - Reachability
+
 SPEC CHECKSUMS:
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FreeStreamer: 7e9c976045701ac2f7e9c14c17245203c37bf2ea
+  GKNavigationBarViewController: 034111e6ca42b1fe837955a695dbf81cbfd01c41
+  MJExtension: 6b69b3bef2864fd550ce1a184eda219e321209d2
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
-PODFILE CHECKSUM: 360df3479610c529e84adf1bacef9465a2c1b535
+PODFILE CHECKSUM: 70a27d9211d904db82c86fc38e8349c9a77a97e5
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.6.1
