@@ -11,6 +11,7 @@
 #import "YMPhonePlayerColView.h"
 #import "UIView+YMExtension.h"
 #import "YMSTKAudioPlayer.h"
+#import "YMModel.h"
 
 
 @interface YMPhonePlayerViewController ()
@@ -56,6 +57,7 @@
 - (void)loadDataPlayer {
     YMModel *model = self.musicModels[self.index];
     NSURL *url = [NSURL URLWithString:model.url];
+    self.phonePlayerColView.currentModel = model; //当前播放的音频model
     
     YMSTKAudioPlayer *player = [YMSTKAudioPlayer shareInstance];
     player.refreshTimeInterval = 1;
@@ -123,6 +125,7 @@
     player.startPlayBlock = ^(NSURL * _Nonnull URL) {
         YMLog(@"开始播放:%@",URL);
         [ws.phonePlayerColView startPlayingMusic];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTitle" object:nil userInfo:@{@"name":ws.phonePlayerColView.currentModel.name}];
     };
     
     player.finishPlayBlock = ^(NSURL * _Nonnull URL) {

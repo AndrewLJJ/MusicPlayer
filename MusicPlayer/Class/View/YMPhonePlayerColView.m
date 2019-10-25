@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet YMProgressSlider *progressSlider;
 /** 总时间 */
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeL;
+/** 当前已经选中的播放模式 */
+@property (nonatomic, assign) YMSTKAudioPlayerPlayMode                  currentPlayMode;
 
 @end
 
@@ -53,6 +55,7 @@
 //获取播放playMode
 - (void)reloadPlayMode {
     PlayMode = [YMLocalCacheInfo getPlayMode];
+    self.currentPlayMode = PlayMode;
     switch (PlayMode) {
         case YMSTKAudioPlayerPlayModeCycle: //顺序
         {
@@ -233,11 +236,33 @@
         }
             break;
     }
+    
+    self.currentPlayMode = [YMLocalCacheInfo getPlayMode];
 }
 
 /** 上一首 */
 - (IBAction)lastBtnClick:(UIButton *)sender {
-    YMModel *model = [self previousMusic];
+    YMModel *model = nil;
+    switch (self.currentPlayMode) {
+        case YMSTKAudioPlayerPlayModeCycle: //顺序
+        {
+            model = [self previousMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeSingleCycle: //单曲
+        {
+            model = [self singeMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeShuffleCycle: //随机
+        {
+            model = [self shuffleMusic];
+        }
+            break;
+            
+        default:
+            break;
+    }
     [[YMSTKAudioPlayer shareInstance] ym_playWithURL:[NSURL URLWithString:model.url]];
 }
 
@@ -254,10 +279,34 @@
 
 /** 下一首 */
 - (IBAction)nextBtnClick:(UIButton *)sender {
+    YMModel *model = nil;
+    switch (self.currentPlayMode) {
+        case YMSTKAudioPlayerPlayModeCycle: //顺序
+        {
+            model = [self nextMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeSingleCycle: //单曲
+        {
+            model = [self singeMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeShuffleCycle: //随机
+        {
+            model = [self shuffleMusic];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [[YMSTKAudioPlayer shareInstance] ym_playWithURL:[NSURL URLWithString:model.url]];
+    
 }
 
 /** 播放列表 */
 - (IBAction)playListBtnClick:(UIButton *)sender {
+    
 }
 
 /** 开始播放 */
@@ -281,7 +330,6 @@
     if ([urls containsObject:url]) {
         currentIndex = [urls indexOfObject:url];
     }
-    
     //2.获取上一首音频的下标值
     NSInteger previousIndex = --currentIndex;
     YMModel *previousModel = nil;
@@ -289,8 +337,60 @@
         previousIndex = self.musicModels.count - 1;
     }
     previousModel = self.musicModels[previousIndex];
-    
+    self.currentModel = previousModel;
     return previousModel;
 }
+
+/** 返回下一首音乐 */
+- (YMModel *)nextMusic {
+    //1.获取当前音乐下标值
+    NSString *url = [[YMSTKAudioPlayer shareInstance].currentURL absoluteString];
+    //获取音频数组中的url
+    NSArray *urls = [self.musicModels valueForKey:@"url"];
+    //查看是否存在这个url
+    NSInteger currentIndex = 0;
+    if ([urls containsObject:url]) {
+        currentIndex = [urls indexOfObject:url];
+    }
+    //2.获取上一首音频的下标值
+    NSInteger nextIndex = ++currentIndex;
+    YMModel *nextModel = nil;
+    if (nextIndex >= self.musicModels.count) {
+        nextIndex = 0;
+    }
+    nextModel = self.musicModels[nextIndex];
+    self.currentModel = nextModel;
+    return nextModel;
+}
+
+/** 单曲循环 */
+- (YMModel *)singeMusic {
+    //1.获取当前音乐下标值
+    NSString *url = [[YMSTKAudioPlayer shareInstance].currentURL absoluteString];
+    //获取音频数组中的url
+    NSArray *urls = [self.musicModels valueForKey:@"url"];
+    //查看是否存在这个url
+    NSInteger currentIndex = 0;
+    if ([urls containsObject:url]) {
+        currentIndex = [urls indexOfObject:url];
+    }
+    YMModel *nextModel = nil;
+    if (currentIndex >= self.musicModels.count) {
+        currentIndex = 0;
+    }
+    nextModel = self.musicModels[currentIndex];
+    self.currentModel = nextModel;
+    return nextModel;
+}
+
+/** 随机播放 */
+- (YMModel *)shuffleMusic {
+    //随机获取数组中的元素的下标
+    NSInteger currentIndex = arc4random() % self.musicModels.count;
+    YMModel *model = self.musicModels[currentIndex];
+    self.currentModel = model;
+    return model;
+}
+
 
 @end

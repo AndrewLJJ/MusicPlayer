@@ -40,6 +40,14 @@
     [self setupChildViewControllers];
     //默认添加子控制器View
     [self addChildVcView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTitle:) name:@"reloadTitle" object:nil];
+}
+
+- (void)reloadTitle:(NSNotification *)noti {
+    NSDictionary *dict = noti.userInfo;
+    NSString *title = dict[@"name"];
+    self.gk_navTitle = title;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
