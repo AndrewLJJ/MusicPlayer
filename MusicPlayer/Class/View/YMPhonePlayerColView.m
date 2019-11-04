@@ -309,6 +309,11 @@
     
 }
 
+//下一首
+- (void)nextAudio {
+    [self nextBtnClick:self.nextBtn];
+}
+
 /** 开始播放 */
 - (void)startPlayingMusic {
     self.playPauseBtn.selected = YES;

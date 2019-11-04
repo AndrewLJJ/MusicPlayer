@@ -19,8 +19,9 @@ target 'MusicPlayer' do
 
 
    pod 'GKNavigationBarViewController'
-   pod 'AFNetworking',
+   pod 'AFNetworking'
    pod 'MJExtension'
    pod 'FreeStreamer'
+   pod 'SDWebImage'
 
 end

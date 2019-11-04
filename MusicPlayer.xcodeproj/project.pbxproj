@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6A82904738FBCF661C962CB4 /* libPods-MusicPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1F97D841FAFF147711CAE6 /* libPods-MusicPlayer.a */; };
+		B1000A2623701ABC00726802 /* YMIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1000A2523701ABC00726802 /* YMIconView.m */; };
+		B1000A2823701AC800726802 /* YMIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1000A2723701AC800726802 /* YMIconView.xib */; };
 		B1025ED723223F5700C82B50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1025ED623223F5700C82B50 /* AppDelegate.m */; };
 		B1025EDA23223F5700C82B50 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1025ED923223F5700C82B50 /* ViewController.m */; };
 		B1025EDD23223F5700C82B50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1025EDB23223F5700C82B50 /* Main.storyboard */; };
@@ -66,6 +68,9 @@
 		294B9ED6D564C5894EE9222B /* libPods-MusicPlayerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicPlayerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EC5F2F93ABAE1547306C0C1 /* Pods-MusicPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-MusicPlayerUITests/Pods-MusicPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9B7DECA239FF383B2D57C846 /* Pods-MusicPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerTests.release.xcconfig"; path = "Target Support Files/Pods-MusicPlayerTests/Pods-MusicPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		B1000A2423701ABC00726802 /* YMIconView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YMIconView.h; sourceTree = "<group>"; };
+		B1000A2523701ABC00726802 /* YMIconView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YMIconView.m; sourceTree = "<group>"; };
+		B1000A2723701AC800726802 /* YMIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YMIconView.xib; sourceTree = "<group>"; };
 		B1025ED223223F5700C82B50 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1025ED523223F5700C82B50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1025ED623223F5700C82B50 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -315,6 +320,9 @@
 				B111E78823289FD60000721C /* YMPhonePlayerColView.xib */,
 				B102EC60233DF46F00A18458 /* YMProgressSlider.h */,
 				B102EC61233DF46F00A18458 /* YMProgressSlider.m */,
+				B1000A2423701ABC00726802 /* YMIconView.h */,
+				B1000A2523701ABC00726802 /* YMIconView.m */,
+				B1000A2723701AC800726802 /* YMIconView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1000A2823701AC800726802 /* YMIconView.xib in Resources */,
 				B1025EE223223F5900C82B50 /* LaunchScreen.storyboard in Resources */,
 				B1025EDF23223F5900C82B50 /* Assets.xcassets in Resources */,
 				B1025EDD23223F5700C82B50 /* Main.storyboard in Resources */,
@@ -492,16 +501,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MusicPlayer/Pods-MusicPlayer-resources.sh",
-				"${PODS_ROOT}/GKNavigationBarViewController/GKNavigationBarViewController/GKNavigationBarViewController.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-MusicPlayer/Pods-MusicPlayer-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GKNavigationBarViewController.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-MusicPlayer/Pods-MusicPlayer-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -570,6 +574,7 @@
 				B1025EE523223F5900C82B50 /* main.m in Sources */,
 				B111E782232898B50000721C /* STKDataSource.m in Sources */,
 				B111E77F232898B50000721C /* STKAutoRecoveringHTTPDataSource.m in Sources */,
+				B1000A2623701ABC00726802 /* YMIconView.m in Sources */,
 				B1025F1F2322498800C82B50 /* YMPhonePlayerViewController.m in Sources */,
 				B111E77B232898B50000721C /* STKQueueEntry.m in Sources */,
 				B1025F1C2322467400C82B50 /* UIColor+mrjColor.m in Sources */,

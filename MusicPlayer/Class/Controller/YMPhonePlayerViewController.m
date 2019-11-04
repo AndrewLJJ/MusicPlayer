@@ -12,6 +12,7 @@
 #import "UIView+YMExtension.h"
 #import "YMSTKAudioPlayer.h"
 #import "YMModel.h"
+#import "YMIconView.h"
 
 
 @interface YMPhonePlayerViewController ()
@@ -20,6 +21,8 @@
 @property (nonatomic, weak) KTGradientView                 *backView;
 /** 手机播放器控件View */
 @property (nonatomic, weak) YMPhonePlayerColView                 *phonePlayerColView;
+/** 封面图 */
+@property (nonatomic, weak) YMIconView                 *iconView;
 
 @end
 
@@ -47,6 +50,16 @@
     phonePlayerColView.playMode = YMSTKAudioPlayerPlayModeCycle;
     [self.view addSubview:phonePlayerColView];
     self.phonePlayerColView = phonePlayerColView;
+    
+    //封面图
+    CGFloat iconH = SCREEN_HEIGHT - PhonePlayerColView_Height - Height_NavBar - 40;
+    CGFloat iconY = Height_NavBar + 20;
+    CGFloat iconX = 0;
+    CGFloat iconW = SCREEN_WIDTH;
+    YMIconView *iconView = [YMIconView ym_viewFormXib];
+    iconView.frame = CGRectMake(iconX, iconY, iconW, iconH);
+    [self.view addSubview:iconView];
+    self.iconView = iconView;
     
     self.phonePlayerColView.musicModels = self.musicModels;
     
@@ -124,12 +137,18 @@
     
     player.startPlayBlock = ^(NSURL * _Nonnull URL) {
         YMLog(@"开始播放:%@",URL);
+        [ws.iconView resumeRotate]; //开始转动封面
         [ws.phonePlayerColView startPlayingMusic];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTitle" object:nil userInfo:@{@"name":ws.phonePlayerColView.currentModel.name}];
     };
     
     player.finishPlayBlock = ^(NSURL * _Nonnull URL) {
         YMLog(@"播放完成:%@",URL);
+        [ws.iconView stopRotating];//停止动画
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            //当播放完一首歌时，进行下一首
+            [ws.phonePlayerColView nextAudio];
+        });
     };
     
     [player ym_playWithURL:url];

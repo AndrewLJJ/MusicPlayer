@@ -19,20 +19,26 @@ PODS:
   - GKNavigationBarViewController (2.3.3)
   - MJExtension (3.1.0)
   - Reachability (3.2)
+  - SDWebImage (5.2.5):
+    - SDWebImage/Core (= 5.2.5)
+  - SDWebImage/Core (5.2.5)
 
 DEPENDENCIES:
-  - AFNetworking (= 3.1.0)
+  - AFNetworking
   - FreeStreamer
   - GKNavigationBarViewController
   - MJExtension
+  - SDWebImage
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - FreeStreamer
     - GKNavigationBarViewController
     - MJExtension
     - Reachability
+  trunk:
+    - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -40,7 +46,8 @@ SPEC CHECKSUMS:
   GKNavigationBarViewController: 034111e6ca42b1fe837955a695dbf81cbfd01c41
   MJExtension: 6b69b3bef2864fd550ce1a184eda219e321209d2
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 4eabf2fa6695c95c47724214417a9c036c965e4a
 
-PODFILE CHECKSUM: 70a27d9211d904db82c86fc38e8349c9a77a97e5
+PODFILE CHECKSUM: b668597f3d03770969bc64e0ae13ee1caf05510d
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.3

@@ -20,6 +20,11 @@ typedef NS_ENUM (NSInteger,YMSTKAudioPlayerPlayMode) {
     YMSTKAudioPlayerPlayModeShuffleCycle = 3    //随机循环
 };
 
+typedef NS_ENUM(NSInteger, YMSTKAudioPlayerState) {
+    YMSTKAudioPlayerStatePlay = 1, //播放
+    YMSTKAudioPlayerStatePause = 2 //暂停
+};
+
 @interface YMPhonePlayerColView : UIView
 
 /** 当前播放时间 */
@@ -34,11 +39,15 @@ typedef NS_ENUM (NSInteger,YMSTKAudioPlayerPlayMode) {
 @property (nonatomic, strong) NSArray                *musicModels;
 /** 获取当前播放音频 */
 @property (nonatomic, strong) YMModel                *currentModel;
+/** 播放器状态 */
+@property (nonatomic, assign) YMSTKAudioPlayerState   playerState;
 
 /** 开始播放 */
 - (void)startPlayingMusic;
 /** 暂停播放 */
 - (void)pausePlayingMusic;
+//下一首
+- (void)nextAudio;
 
 @end
 
