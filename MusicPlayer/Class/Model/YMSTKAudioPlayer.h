@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^STKAudioPlayAutomaticBlock)();
+
 @interface YMSTKAudioPlayer : NSObject
 
 /** 播放失败重试次数 默认1 */
@@ -31,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) void(^startPlayBlock)(NSURL *URL);
 /** 播放完成的回调 */
 @property (nonatomic, copy, nullable) void(^finishPlayBlock)(NSURL *URL);
+/** 播放完成自动下一首 */
+@property (nonatomic, copy) STKAudioPlayAutomaticBlock STKAudioPlayAutomaticBlock;
+
 
 /**
  单例

@@ -77,10 +77,10 @@
     
     WS(ws);
     player.refreshBlock = ^(double duration, double progress, STKAudioPlayerState state, STKAudioPlayerErrorCode errorCode) {
-        YMLog(@"时长：%f",duration);
-        YMLog(@"进度：%f",progress);
-        YMLog(@"播放状态：%ld",(long)state);
-        YMLog(@"播放error：%ld",(long)errorCode);
+//        YMLog(@"时长：%f",duration);
+//        YMLog(@"进度：%f",progress);
+//        YMLog(@"播放状态：%ld",(long)state);
+//        YMLog(@"播放error：%ld",(long)errorCode);
         
         //音频时长
         ws.phonePlayerColView.totalTime = duration;
@@ -140,15 +140,13 @@
         [ws.iconView resumeRotate]; //开始转动封面
         [ws.phonePlayerColView startPlayingMusic];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTitle" object:nil userInfo:@{@"name":ws.phonePlayerColView.currentModel.name}];
+        //更新图片
+        ws.iconView.imageUrl = ws.phonePlayerColView.currentModel.imageUrl;
     };
     
     player.finishPlayBlock = ^(NSURL * _Nonnull URL) {
         YMLog(@"播放完成:%@",URL);
         [ws.iconView stopRotating];//停止动画
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //当播放完一首歌时，进行下一首
-            [ws.phonePlayerColView nextAudio];
-        });
     };
     
     [player ym_playWithURL:url];

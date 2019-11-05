@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString                    *name;
 /** url */
 @property (nonatomic, copy) NSString                    *url;
+/** 图片 */
+@property (nonatomic, copy) NSString                    *imageUrl;
 
 @end
 

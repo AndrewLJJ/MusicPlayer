@@ -131,6 +131,12 @@
     
     UITapGestureRecognizer *sliderTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSliderAction:)];
     [self.progressSlider addGestureRecognizer:sliderTap];
+    
+    //自动下一首
+    WS(ws);
+    [[YMSTKAudioPlayer shareInstance] setSTKAudioPlayAutomaticBlock:^{
+        [ws nextAudio];
+    }];
 }
 
 //滑动进度
@@ -301,7 +307,6 @@
             break;
     }
     [[YMSTKAudioPlayer shareInstance] ym_playWithURL:[NSURL URLWithString:model.url]];
-    
 }
 
 /** 播放列表 */
@@ -311,7 +316,28 @@
 
 //下一首
 - (void)nextAudio {
-    [self nextBtnClick:self.nextBtn];
+    YMModel *model = nil;
+    switch (self.currentPlayMode) {
+        case YMSTKAudioPlayerPlayModeCycle: //顺序
+        {
+            model = [self nextMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeSingleCycle: //单曲
+        {
+            model = [self singeMusic];
+        }
+            break;
+        case YMSTKAudioPlayerPlayModeShuffleCycle: //随机
+        {
+            model = [self shuffleMusic];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    [[YMSTKAudioPlayer shareInstance] ym_playWithURL:[NSURL URLWithString:model.url]];
 }
 
 /** 开始播放 */

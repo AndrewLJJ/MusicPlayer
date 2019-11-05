@@ -160,6 +160,16 @@
     if (_finishPlayBlock) {
         _finishPlayBlock(_currentURL);
     }
+    
+    //当歌曲播放完成，1秒后自动下一首
+    WS(ws);
+    if (audioPlayer.state == STKAudioPlayerStateStopped) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (ws.STKAudioPlayAutomaticBlock) {
+                ws.STKAudioPlayAutomaticBlock();
+            }
+        });
+    }
 }
 
 //当发生意外且可能无法恢复的错误时引发(通常最好重新创建STKAudioPlauyer)
