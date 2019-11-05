@@ -52,6 +52,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.gk_statusBarStyle = UIStatusBarStyleLightContent;
+    self.gk_navTitle = @"暂无播放音频";
+    self.gk_navTitleColor = [UIColor whiteColor];
+    
+    self.gk_navLeftBarButtonItem = [UIBarButtonItem itemWithTitle:@"返回" target:self action:@selector(backClick)];
+}
+
+- (void)backClick {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - titlView

@@ -238,7 +238,7 @@
     
     UIFont *titleFont = self.gk_navTitleFont ? self.gk_navTitleFont : [GKNavigationBarConfigure sharedInstance].titleFont;
     
-    self.gk_navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: gk_navTitleColor, NSFontAttributeName: titleFont};
+    self.gk_navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: gk_navTitleColor, NSFontAttributeName: [UIFont fontWithName:@"PingFangHK-Regular" size:16]};
 }
 
 - (void)setGk_navTitleFont:(UIFont *)gk_navTitleFont {
